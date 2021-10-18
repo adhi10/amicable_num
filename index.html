@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Amicable Numbers</title>
+</head>
+
+<body>
+    <form id="theform" action="">
+        <input type="text" id="first" /> <br>
+        <input type="text" id="second" /> <br>
+        <button type=“button”>Submit</button>
+    </form>
+
+    <div id="divTag">
+
+    </div>
+
+    <script language="javascript">
+
+        document.getElementById('theform').onsubmit = function () {
+            var num1 = document.getElementById('first').value;
+            var num2 = document.getElementById('second').value;
+
+            fac_array1 = factorArray(num1);
+            fac_array2 = factorArray(num2);
+
+            sumFac1 = sumArray(fac_array1);
+            sumFac2 = sumArray(fac_array2);
+
+            alert("Factors of the first number: " + fac_array1);
+            alert("Factors of the second number: " + fac_array2);
+
+            if (sumFac1 == num2 && sumFac2 == num1 && num1 != 0 && num2 != 0) {
+                document.getElementById('divTag').innerHTML = "The numbers:  "
+                    + num1 + " and " + num2 + " are amicable";
+            }
+            else {
+                document.getElementById('divTag').innerHTML = "The numbers:  "
+                    + num1 + " and " + num2 + " are not amicable";
+            }
+
+            return false;
+        }
+
+        function factorArray(x) {
+            fac_arr = []
+            for (let i = 1; i < x; i++) {
+                if (x % i == 0)
+                    fac_arr.push(i);
+            }
+            return fac_arr;
+        }
+
+        function sumArray(arr) {
+            sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += parseInt(arr[i]);
+            }
+            return sum;
+        }
+
+
+    </script>
+
+</body>
+
+</html>
